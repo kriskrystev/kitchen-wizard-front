@@ -45,11 +45,10 @@ export default function SignUp() {
 										label="First Name"
 										error={fieldState.invalid}
 										helperText={fieldState.error?.message}
-										autoFocus
 
 										value={field.value}
-										onChange={field.onChange} // send value to hook form
-										onBlur={field.onBlur} // notify when input is touched
+										onChange={field.onChange}
+										onBlur={field.onBlur}
 										inputRef={field.ref}
 
 									/>
@@ -78,8 +77,8 @@ export default function SignUp() {
 										helperText={fieldState.error?.message}
 
 										value={field.value}
-										onChange={field.onChange} // send value to hook form
-										onBlur={field.onBlur} // notify when input is touched
+										onChange={field.onChange}
+										onBlur={field.onBlur}
 										inputRef={field.ref}
 									/>
 								)}
@@ -107,8 +106,8 @@ export default function SignUp() {
 										helperText={fieldState.error?.message}
 
 										value={field.value}
-										onChange={field.onChange} // send value to hook form
-										onBlur={field.onBlur} // notify when input is touched
+										onChange={field.onChange}
+										onBlur={field.onBlur}
 										inputRef={field.ref}
 									/>
 								)}
@@ -137,8 +136,8 @@ export default function SignUp() {
 										helperText={fieldState.error?.message}
 
 										value={field.value}
-										onChange={field.onChange} // send value to hook form
-										onBlur={field.onBlur} // notify when input is touched
+										onChange={field.onChange}
+										onBlur={field.onBlur}
 										inputRef={field.ref}
 									/>
 								)}
