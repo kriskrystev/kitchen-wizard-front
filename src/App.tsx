@@ -9,7 +9,7 @@ function App() {
 
 			<Navbar/>
 
-			<Container component="main">
+			<Container component="main" sx={{mt: 12}}>
 				<Outlet/>
 			</Container>
 		</>
