@@ -11,7 +11,6 @@ function Navbar() {
 	const dispatch = useAppDispatch();
 
 	const handleLogout = () => {
-		debugger;
 		dispatch(logout());
 	}
 
