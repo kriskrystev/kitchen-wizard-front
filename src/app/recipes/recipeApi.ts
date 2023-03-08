@@ -1,15 +1,13 @@
-import { createApi } from "@reduxjs/toolkit/query/react";
-import { baseQueryDecorator, fbQuery } from "../fetch-base-query";
+import { baseApi } from "../baseApi";
 
-const recipeApi = createApi({
-	reducerPath: 'recipesApi',
-	baseQuery: baseQueryDecorator(fbQuery('/api')),
+const recipeApi = baseApi.injectEndpoints({
 	endpoints: (builder) => ({
 		getRecipes: builder.query<any, void>({
-			query: () => '/recipes'
-		})
+			query: () => '/recipes',
+			providesTags: ['Recipes']
+		}),
 	})
-});
+})
 
 export const { useGetRecipesQuery } = recipeApi;
 

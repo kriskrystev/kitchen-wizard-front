@@ -10,7 +10,7 @@ const recipeSlice = createSlice({
 	initialState,
 	reducers: {},
 	extraReducers: (builder) => {
-		builder.addMatcher(recipeApi.endpoints.getRecipes.matchFulfilled, (state, {payload}) => {
+		builder.addMatcher(recipeApi.endpoints.getRecipes.matchFulfilled, (state, { payload }) => {
 			state.recipes = payload;
 		});
 	}
