@@ -2,20 +2,17 @@ import { configureStore } from '@reduxjs/toolkit';
 import authSlice from './auth/authSlice';
 import recipeSlice from "./recipes/recipeSlice";
 
-import { authApi } from './auth/authApi';
-import { recipeApi } from "./recipes/recipeApi";
+import { baseApi } from "./baseApi";
 
 export const store = configureStore({
 	reducer: {
-		authSlice: authSlice,
 		recipeSlice: recipeSlice,
-		[recipeApi.reducerPath]: recipeApi.reducer,
-		[authApi.reducerPath]: authApi.reducer
+		authSlice: authSlice,
+		[baseApi.reducerPath]: baseApi.reducer
 	},
 	middleware: (getDefaultMiddleware) => {
 		return getDefaultMiddleware()
-			.concat(authApi.middleware)
-			.concat(recipeApi.middleware)
+			.concat(baseApi.middleware)
 	}
 });
 

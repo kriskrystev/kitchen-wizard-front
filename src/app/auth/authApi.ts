@@ -1,20 +1,18 @@
-import { createApi } from '@reduxjs/toolkit/query/react';
-import { baseQueryDecorator, fbQuery } from "../fetch-base-query";
+import { baseApi } from "../baseApi";
 
-const authApi = createApi({
-	reducerPath: 'authApi',
-	baseQuery: baseQueryDecorator(fbQuery('/api/auth')),
+const authApi = baseApi.injectEndpoints({
 	endpoints: (builder) => ({
 		userLogin: builder.mutation({
 			query: (credentials) => ({
-				url: '/login',
+				url: '/auth/login',
 				method: 'POST',
 				body: credentials,
 			}),
+			invalidatesTags: ['Recipes']
 		}),
 		userRegister: builder.mutation({
 			query: (userData) => ({
-				url: '/register',
+				url: '/users',
 				method: 'POST',
 				body: userData,
 			}),
@@ -23,4 +21,4 @@ const authApi = createApi({
 });
 
 export { authApi };
-export const { useUserLoginMutation } = authApi;
+export const { useUserLoginMutation, useUserRegisterMutation } = authApi;

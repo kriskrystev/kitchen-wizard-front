@@ -1,17 +1,50 @@
-import { Avatar, Box, Button, Grid, Link, TextField, Typography } from "@mui/material";
+import { Alert, AlertTitle, Avatar, Box, Button, Grid, Link, TextField, Typography } from "@mui/material";
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
 import { Controller, useForm } from "react-hook-form";
 import { emailRules, passwordRules, requiredRule } from "../../../../constants/form-rules";
+import { useUserRegisterMutation } from "../../../../app/auth/authApi";
+import IconButton from "@mui/material/IconButton";
+import CloseIcon from "@mui/icons-material/Close";
+import { useEffect } from "react";
 
 export default function SignUp() {
 
+	const navigate = useNavigate();
+	const [register, { isLoading, error, reset, isSuccess }] = useUserRegisterMutation();
 	const { control, handleSubmit } = useForm({ mode: "all" });
 
-	const onSubmit = (data: any) => console.log(data);
+	const onSubmit = (data: any) => {
+		register(data);
+	};
+
+	useEffect(() => {
+		if (isSuccess) {
+			navigate('/auth/sign-in');
+		}
+	}, [isSuccess]);
 
 	return (
 		<>
+			{error && (
+				<Alert
+					severity="error"
+					action={
+						<IconButton
+							aria-label="close"
+							color="inherit"
+							size="small"
+							onClick={reset}
+						>
+							<CloseIcon fontSize="inherit"/>
+						</IconButton>
+					}
+				>
+					<AlertTitle>Error</AlertTitle>
+					{error.data.message}
+				</Alert>
+			)}
+
 			<Box
 				sx={{
 					marginTop: 8,
@@ -147,6 +180,7 @@ export default function SignUp() {
 					<Button
 						type="submit"
 						fullWidth
+						disabled={isLoading}
 						variant="contained"
 						sx={{ mt: 3, mb: 2 }}
 					>
