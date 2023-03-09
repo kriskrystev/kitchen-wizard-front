@@ -1,18 +1,13 @@
 import { AppBar, Box, Button, Toolbar, Typography } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { useAppSelector } from "../../app/hooks";
 import { selectAuthenticatedUser } from "../../app/auth/authSelectors";
-import { Login as LoginIcon, Logout as LogoutIcon } from "@mui/icons-material";
-import { logout } from "../../app/auth/authSlice";
+import { Login as LoginIcon } from "@mui/icons-material";
+import AccountMenu from "../shared/AccountMenu";
 
 function Navbar() {
 	const { accessToken } = useAppSelector(selectAuthenticatedUser);
-	const dispatch = useAppDispatch();
-
-	const handleLogout = () => {
-		dispatch(logout());
-	}
 
 	return (
 		<Box>
@@ -27,10 +22,7 @@ function Navbar() {
 								<LoginIcon/>
 								<Typography variant="subtitle2" ml={1}>Login</Typography>
 							</Button> :
-							<Button color="inherit" onClick={handleLogout}>
-								<Typography variant="subtitle2" mr={1}>Logout</Typography>
-								<LogoutIcon/>
-							</Button>
+							<AccountMenu/>
 					}
 				</Toolbar>
 			</AppBar>
