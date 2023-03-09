@@ -5,8 +5,10 @@ import * as React from 'react';
 import Search from "../../shared/Search";
 import LoadingList from "../../shared/LoadingList";
 import AddIcon from '@mui/icons-material/Add';
+import { useNavigate } from "react-router-dom";
 
 function RecipesList() {
+	const navigate = useNavigate();
 	const { data, isLoading, error } = useGetRecipesQuery();
 
 	if (error) {
@@ -41,7 +43,7 @@ function RecipesList() {
 						<Search placeholder="Search Recipes"/>
 					</Grid>
 					<Grid item>
-						<Button variant="outlined" startIcon={<AddIcon/>}>
+						<Button variant="outlined" onClick={() => navigate('/recipes/new')} startIcon={<AddIcon/>}>
 							New
 						</Button>
 					</Grid>
