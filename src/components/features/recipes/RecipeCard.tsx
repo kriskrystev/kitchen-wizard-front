@@ -10,8 +10,6 @@ import { red } from '@mui/material/colors';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 export default function RecipeCard({title, description, time}: any) {
-
-	// title, description, time
 	return (
 		<Card sx={{ maxWidth: 345 }}>
 			<CardHeader
@@ -31,7 +29,7 @@ export default function RecipeCard({title, description, time}: any) {
 			<CardMedia
 				component="img"
 				height="194"
-				image="https://picsum.photos/1024/800"
+				image="https://www.themealdb.com/images/media/meals/llcbn01574260722.jpg/preview"
 				alt="Paella dish"
 			/>
 			<CardContent>

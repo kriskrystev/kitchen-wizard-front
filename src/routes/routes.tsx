@@ -8,6 +8,7 @@ import NonAuthProtectedRoute from "../components/layout/NonAuthProtectedRoute";
 import RecipesList from "../components/features/recipes/RecipesList";
 import ProtectedRoute from "../components/layout/ProtectedRoute";
 import { Container } from "@mui/material";
+import CreateRecipeForm from "../components/features/recipes/CreateRecipeForm";
 
 const authRoutes: RouteObject[] = [
 	{
@@ -61,8 +62,12 @@ export const routes: RouteObject[] = [
 						element: <RecipesList/>
 					},
 					{
-						path: ":id",
-						element: <>Element with some id</>
+						path: "new",
+						element: <CreateRecipeForm/>
+					},
+					{
+						path: "edit/:id",
+						element: <CreateRecipeForm/>
 					}
 				]
 			}
